@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Container } from "@/components/site/Container";
 import { CTAPrimary } from "@/components/site/CTAPrimary";
+import { ClosingCTA } from "@/components/site/ClosingCTA";
+import { PairBlock } from "@/components/site/PairBlock";
+import { SectionEyebrow } from "@/components/site/SectionEyebrow";
+import { buildServices, operateServices } from "@/lib/services";
 
 const heroGridStyle: React.CSSProperties = {
   backgroundImage:
@@ -13,90 +17,10 @@ const heroGridStyle: React.CSSProperties = {
   animation: "vl-drift 18s ease-in-out infinite alternate",
 };
 
-const buildServices = [
-  {
-    label: "01",
-    title: "AI Website Systems",
-    desc: "Conversion-led websites built with AI-assisted workflows. Fast, modern, and engineered to generate leads.",
-    href: "/services/website-systems",
-    icon: (
-      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="3" y="5" width="22" height="16" stroke="currentColor" strokeWidth="1" />
-        <line x1="3" y1="10" x2="25" y2="10" stroke="currentColor" strokeWidth="1" />
-        <circle cx="6" cy="7.5" r="0.6" fill="currentColor" />
-        <circle cx="8.5" cy="7.5" r="0.6" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    label: "02",
-    title: "AI Content Systems",
-    desc: "AI scripting engines and automated production workflows that turn one brief into video, written, and social output at scale.",
-    href: "/services/content-systems",
-    icon: (
-      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M5 6 L13 6 L13 14 L5 14 Z" stroke="currentColor" strokeWidth="1" />
-        <path d="M9 11 L11 9 L11 13 Z" fill="currentColor" />
-        <line x1="16" y1="6" x2="24" y2="6" stroke="currentColor" strokeWidth="1" />
-        <line x1="16" y1="9" x2="22" y2="9" stroke="currentColor" strokeWidth="1" />
-        <line x1="16" y1="12" x2="24" y2="12" stroke="currentColor" strokeWidth="1" />
-        <line x1="5" y1="18" x2="24" y2="18" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-        <line x1="5" y1="21" x2="20" y2="21" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-        <line x1="5" y1="24" x2="22" y2="24" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-      </svg>
-    ),
-  },
-];
-
-const operateServices = [
-  {
-    label: "03",
-    title: "AI Business Automation",
-    desc: "Workflows that eliminate repetitive admin, qualify leads, and modernise day-to-day operations.",
-    href: "/services/business-automation",
-    icon: (
-      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="6" cy="6" r="2" stroke="currentColor" strokeWidth="1" />
-        <circle cx="22" cy="6" r="2" stroke="currentColor" strokeWidth="1" />
-        <circle cx="14" cy="22" r="2" stroke="currentColor" strokeWidth="1" />
-        <line x1="7.5" y1="7.5" x2="13" y2="20.5" stroke="currentColor" strokeWidth="1" />
-        <line x1="20.5" y1="7.5" x2="15" y2="20.5" stroke="currentColor" strokeWidth="1" />
-        <line x1="8" y1="6" x2="20" y2="6" stroke="currentColor" strokeWidth="1" />
-      </svg>
-    ),
-  },
-  {
-    label: "04",
-    title: "AI Business Audits",
-    desc: "A diagnostic of your current systems, with a clear roadmap for what to modernise first.",
-    href: "/services/business-audits",
-    icon: (
-      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="4" y="4" width="20" height="20" stroke="currentColor" strokeWidth="1" />
-        <line x1="4" y1="14" x2="24" y2="14" stroke="currentColor" strokeWidth="1" />
-        <line x1="14" y1="4" x2="14" y2="24" stroke="currentColor" strokeWidth="1" />
-        <circle cx="19" cy="9" r="1.2" fill="currentColor" />
-      </svg>
-    ),
-  },
-];
-
 const processSteps = [
-  {
-    num: "01",
-    title: "Audit",
-    desc: "We map your current systems and identify the highest-leverage opportunities.",
-  },
-  {
-    num: "02",
-    title: "Build",
-    desc: "We design and implement the websites, automations and workflows.",
-  },
-  {
-    num: "03",
-    title: "Operate",
-    desc: "We refine, maintain and evolve the systems as your business grows.",
-  },
+  { num: "01", title: "Audit", desc: "We map your current systems and identify the highest-leverage opportunities." },
+  { num: "02", title: "Build", desc: "We design and implement the websites, automations and workflows." },
+  { num: "03", title: "Operate", desc: "We refine, maintain and evolve the systems as your business grows." },
 ];
 
 const outcomes = [
@@ -104,72 +28,6 @@ const outcomes = [
   { lead: "Lead response time cut from", em: "hours to minutes.", trail: "" },
   { lead: "Quoting cycles compressed from", em: "days to same-day.", trail: "" },
 ];
-
-type Service = (typeof buildServices)[number];
-
-function ServiceCard({ service, last }: { service: Service; last: boolean }) {
-  return (
-    <article
-      className={`relative px-7 pt-9 pb-8 transition-colors duration-200 ease-out hover:bg-sage/[0.04] max-md:px-0 max-md:py-7 max-md:border-b-[0.5px] max-md:border-white/[0.12] ${
-        last
-          ? "max-md:border-b-0"
-          : "border-r-[0.5px] border-white/[0.12] max-md:border-r-0"
-      }`}
-    >
-      <div className="mb-7 block h-7 w-7 text-sage">{service.icon}</div>
-      <div className="mb-3.5 text-[11px] tracking-[0.18em] text-sage uppercase">
-        {service.label}
-      </div>
-      <h3 className="mb-3.5 text-[19px] leading-[1.25] font-medium tracking-tight text-off-white">
-        {service.title}
-      </h3>
-      <p className="mb-6 text-[13px] leading-[1.6] text-off-white/75">{service.desc}</p>
-      <Link
-        href={service.href}
-        className="group inline-flex items-center gap-1.5 text-[12px] text-sage transition-[gap] duration-200 ease-out hover:gap-2.5"
-      >
-        Learn more <span>→</span>
-      </Link>
-    </article>
-  );
-}
-
-function PairBlock({
-  num,
-  title,
-  desc,
-  services,
-}: {
-  num: string;
-  title: string;
-  desc: string;
-  services: Service[];
-}) {
-  return (
-    <div className="mb-12 border-t-[0.5px] border-white/[0.12] pt-9 last:mb-0">
-      <div className="mb-9 flex flex-wrap items-baseline gap-x-[18px] gap-y-2">
-        <span className="font-serif text-[28px] font-normal text-sage italic">
-          {num}
-        </span>
-        <h2 className="m-0 text-[26px] font-medium tracking-tighter text-off-white">
-          {title}
-        </h2>
-        <p className="m-0 ml-auto max-w-[280px] text-[13px] leading-[1.55] tracking-[0.01em] text-off-white/70 max-md:m-0 max-md:max-w-full">
-          {desc}
-        </p>
-      </div>
-      <div className="grid grid-cols-2 border-t-[0.5px] border-white/[0.12] max-md:grid-cols-1">
-        {services.map((service, i) => (
-          <ServiceCard
-            key={service.title}
-            service={service}
-            last={i === services.length - 1}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -208,9 +66,7 @@ export default function Home() {
       {/* Section 01 — The shift */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
         <Container>
-          <div className="mb-8 text-[11px] tracking-[0.18em] text-sage/85 uppercase">
-            01 — The shift
-          </div>
+          <SectionEyebrow>01 — The shift</SectionEyebrow>
           <p className="m-0 max-w-[620px] font-serif text-[clamp(22px,3vw,30px)] leading-[1.32] font-normal tracking-soft text-off-white/95 [&_em]:text-sage [&_em]:italic">
             Most businesses are operating with systems built for a slower era.
             Manual admin, disconnected tools, websites that don&rsquo;t generate
@@ -226,9 +82,7 @@ export default function Home() {
       {/* Section 02 — What we do */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
         <Container>
-          <div className="mb-8 text-[11px] tracking-[0.18em] text-sage/85 uppercase">
-            02 — What we do
-          </div>
+          <SectionEyebrow>02 — What we do</SectionEyebrow>
           <p className="m-0 mb-14 max-w-[580px] font-serif text-[clamp(20px,2.4vw,26px)] leading-[1.32] font-normal tracking-soft text-off-white/95 [&_em]:text-sage [&_em]:italic">
             Two halves of one practice. <em>Build</em> creates the systems your
             business runs on. <em>Operate</em> keeps them sharp, working harder
@@ -253,9 +107,7 @@ export default function Home() {
       {/* Section 03 — How we work */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
         <Container>
-          <div className="mb-8 text-[11px] tracking-[0.18em] text-sage/85 uppercase">
-            03 — How we work
-          </div>
+          <SectionEyebrow>03 — How we work</SectionEyebrow>
           <div className="mt-2 grid grid-cols-3 max-md:grid-cols-1 max-md:gap-8">
             {processSteps.map((step, i) => (
               <div
@@ -284,9 +136,7 @@ export default function Home() {
       {/* Section 04 — Outcomes */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
         <Container>
-          <div className="mb-8 text-[11px] tracking-[0.18em] text-sage/85 uppercase">
-            04 — Outcomes
-          </div>
+          <SectionEyebrow>04 — Outcomes</SectionEyebrow>
           <div className="mt-2 flex flex-col">
             {outcomes.map((o, i) => (
               <div
@@ -309,18 +159,10 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Closing CTA */}
-      <section className="border-t-[0.5px] border-white/[0.12] bg-graphite-deep py-35 max-md:py-24">
-        <Container>
-          <h2 className="m-0 mb-6 max-w-[700px] text-[clamp(40px,7vw,72px)] leading-[1.04] font-medium tracking-tightest text-off-white [&_em]:font-serif [&_em]:font-normal [&_em]:text-sage [&_em]:italic">
-            Let&rsquo;s build <em>something better.</em>
-          </h2>
-          <p className="m-0 mb-9 max-w-[380px] text-[14px] leading-[1.6] text-off-white/75">
-            A 30-minute call to map where AI fits in your business.
-          </p>
-          <CTAPrimary href="/contact">Book a discovery call</CTAPrimary>
-        </Container>
-      </section>
+      <ClosingCTA
+        heading={<>Let&rsquo;s build <em>something better.</em></>}
+        sub="A 30-minute call to map where AI fits in your business."
+      />
     </>
   );
 }
