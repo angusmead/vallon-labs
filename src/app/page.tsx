@@ -4,6 +4,8 @@ import { CTAPrimary } from "@/components/site/CTAPrimary";
 import { ClosingCTA } from "@/components/site/ClosingCTA";
 import { PairBlock } from "@/components/site/PairBlock";
 import { SectionEyebrow } from "@/components/site/SectionEyebrow";
+import { HeroVisual } from "@/components/site/HeroVisual";
+import { LogoStrip } from "@/components/site/LogoStrip";
 import { buildServices, operateServices } from "@/lib/services";
 
 const heroGridStyle: React.CSSProperties = {
@@ -24,9 +26,18 @@ const processSteps = [
 ];
 
 const outcomes = [
-  { lead: "Admin hours reduced by", em: "60–80%", trail: "on automated workflows." },
-  { lead: "Lead response time cut from", em: "hours to minutes.", trail: "" },
-  { lead: "Quoting cycles compressed from", em: "days to same-day.", trail: "" },
+  {
+    metric: "60–80%",
+    label: "Admin hours reduced on automated workflows.",
+  },
+  {
+    metric: "Minutes",
+    label: "Lead response time, down from hours.",
+  },
+  {
+    metric: "Same-day",
+    label: "Quoting cycles, compressed from days.",
+  },
 ];
 
 export default function Home() {
@@ -40,28 +51,38 @@ export default function Home() {
           style={heroGridStyle}
         />
         <Container className="relative">
-          <div className="mb-7 flex items-center gap-2.5 text-[11px] tracking-[0.18em] text-sage uppercase">
-            <span className="block h-px w-6 bg-sage" />
-            AI Systems Studio · Australia
-          </div>
-          <h1 className="m-0 mb-7 max-w-[720px] text-[clamp(40px,7vw,72px)] leading-[1.04] font-medium tracking-tightest text-off-white [&_em]:font-serif [&_em]:font-normal [&_em]:text-sage [&_em]:italic">
-            Modern business systems, <em>powered by AI.</em>
-          </h1>
-          <p className="m-0 mb-10 max-w-[480px] text-[15px] leading-[1.6] text-off-white/[0.82]">
-            Vallon Labs builds AI-powered websites, automation and workflows for
-            businesses ready to operate in the era ahead.
-          </p>
-          <div className="flex flex-wrap gap-3.5">
-            <CTAPrimary href="/contact">Book a discovery call</CTAPrimary>
-            <Link
-              href="/services"
-              className="inline-flex items-center rounded-full border-[0.5px] border-white/[0.28] px-5 py-3 text-[13px] tracking-[0.01em] text-off-white transition-colors duration-200 ease-out hover:border-sage/55"
-            >
-              View services
-            </Link>
+          <div className="grid grid-cols-[1fr_minmax(0,520px)] items-center gap-x-16 gap-y-14 max-lg:grid-cols-1 max-lg:items-start">
+            <div>
+              <div className="mb-7 flex items-center gap-2.5 text-[11px] tracking-[0.18em] text-sage uppercase">
+                <span className="block h-px w-6 bg-sage" />
+                AI Systems Studio · Australia
+              </div>
+              <h1 className="m-0 mb-7 max-w-[640px] text-[clamp(40px,6.4vw,72px)] leading-[1.04] font-medium tracking-tightest text-off-white [&_em]:font-serif [&_em]:font-normal [&_em]:text-sage [&_em]:italic">
+                Modern business systems, <em>powered by AI.</em>
+              </h1>
+              <p className="m-0 mb-10 max-w-[480px] text-[15px] leading-[1.6] text-off-white/[0.82]">
+                Vallon Labs builds AI-powered websites, automation and workflows
+                for businesses ready to operate in the era ahead.
+              </p>
+              <div className="flex flex-wrap gap-3.5">
+                <CTAPrimary href="/contact">Book a discovery call</CTAPrimary>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center rounded-full border-[0.5px] border-white/[0.28] px-5 py-3 text-[13px] tracking-[0.01em] text-off-white transition-colors duration-200 ease-out hover:border-sage/55"
+                >
+                  View services
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex justify-end max-lg:justify-start">
+              <HeroVisual />
+            </div>
           </div>
         </Container>
       </section>
+
+      <LogoStrip />
 
       {/* Section 01 — The shift */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
@@ -133,25 +154,21 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Section 04 — Outcomes */}
+      {/* Section 04 — Outcomes (big stat treatment) */}
       <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
         <Container>
           <SectionEyebrow>04 — Outcomes</SectionEyebrow>
-          <div className="mt-2 flex flex-col">
-            {outcomes.map((o, i) => (
+          <div className="grid grid-cols-3 gap-x-12 gap-y-14 max-md:grid-cols-1">
+            {outcomes.map((o) => (
               <div
-                key={o.lead}
-                className={`flex items-baseline gap-6 border-t-[0.5px] border-white/[0.12] py-[22px] ${
-                  i === outcomes.length - 1 ? "border-b-[0.5px]" : ""
-                }`}
+                key={o.metric}
+                className="border-t-[0.5px] border-white/[0.12] pt-8"
               >
-                <span
-                  aria-hidden
-                  className="block h-1.5 w-1.5 shrink-0 rounded-full bg-sage"
-                />
-                <p className="m-0 flex-1 font-serif text-[clamp(18px,2.2vw,22px)] leading-[1.35] font-normal tracking-[-0.005em] text-off-white/95">
-                  {o.lead} <em className="text-sage italic">{o.em}</em>
-                  {o.trail ? ` ${o.trail}` : ""}
+                <div className="mb-5 font-serif text-[clamp(56px,8.5vw,108px)] leading-[0.95] font-normal tracking-tightest text-sage italic">
+                  {o.metric}
+                </div>
+                <p className="m-0 max-w-[260px] text-[14px] leading-[1.5] text-off-white/75">
+                  {o.label}
                 </p>
               </div>
             ))}
