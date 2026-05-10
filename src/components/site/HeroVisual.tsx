@@ -40,7 +40,7 @@ export function HeroVisual() {
 
         {/* Image */}
         <Image
-          src="/hero-systems.png"
+          src="/hero-systems.jpg"
           alt="Vallon Labs orchestration interface — workflow cards, AI scoring, and a project review surface"
           width={2048}
           height={2048}
