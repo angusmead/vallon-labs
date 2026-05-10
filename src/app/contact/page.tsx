@@ -43,9 +43,12 @@ export default function ContactPage() {
                 <p className="m-0 text-[14px] leading-[1.6] text-off-white/80">
                   Email is fastest while the calendar is offline.
                 </p>
-                <p className="m-0 mt-2 text-[14px] text-off-white">
-                  <span className="text-off-white/60">hello@vallon.labs</span>
-                </p>
+                <a
+                  href="mailto:info@vallonlabs.com.au"
+                  className="mt-2 inline-block border-b-[0.5px] border-sage/40 text-[14px] text-off-white transition-colors duration-200 ease-out hover:border-sage hover:text-sage"
+                >
+                  info@vallonlabs.com.au
+                </a>
               </div>
 
               <div>
