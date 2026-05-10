@@ -4,7 +4,7 @@ import { CTAPrimary } from "@/components/site/CTAPrimary";
 import { ClosingCTA } from "@/components/site/ClosingCTA";
 import { PairBlock } from "@/components/site/PairBlock";
 import { SectionEyebrow } from "@/components/site/SectionEyebrow";
-import { HeroVisual } from "@/components/site/HeroVisual";
+import { FramedFigure } from "@/components/site/FramedFigure";
 import { LogoStrip } from "@/components/site/LogoStrip";
 import { buildServices, operateServices } from "@/lib/services";
 
@@ -76,7 +76,16 @@ export default function Home() {
             </div>
 
             <div className="flex justify-end max-lg:justify-start">
-              <HeroVisual />
+              <FramedFigure
+                src="/hero-systems.jpg"
+                alt="Vallon Labs orchestration interface — workflow cards, AI scoring, and a project review surface"
+                width={2048}
+                height={2048}
+                figureNumber="01"
+                figureLabel="Orchestration"
+                caption="Vallon · Operate · live"
+                priority
+              />
             </div>
           </div>
         </Container>

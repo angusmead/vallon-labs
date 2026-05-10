@@ -3,6 +3,7 @@ import { Container } from "@/components/site/Container";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionEyebrow } from "@/components/site/SectionEyebrow";
 import { ClosingCTA } from "@/components/site/ClosingCTA";
+import { FramedFigure } from "@/components/site/FramedFigure";
 
 export const metadata: Metadata = {
   title: "About",
@@ -60,6 +61,37 @@ export default function AboutPage() {
               else — for businesses across Australia and beyond who are ready to
               operate in the era ahead.
             </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* In the field — 2-col with framed phone */}
+      <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
+        <Container>
+          <div className="grid grid-cols-[1fr_minmax(0,520px)] items-center gap-x-16 gap-y-14 max-lg:grid-cols-1 max-lg:items-start">
+            <div>
+              <SectionEyebrow>In the field</SectionEyebrow>
+              <h2 className="m-0 mb-7 max-w-[520px] text-[clamp(32px,5vw,52px)] leading-[1.08] font-medium tracking-tightest text-off-white [&_em]:font-serif [&_em]:font-normal [&_em]:text-sage [&_em]:italic">
+                We use what we <em>ship.</em>
+              </h2>
+              <p className="m-0 max-w-[480px] font-serif text-[clamp(18px,2.2vw,22px)] leading-[1.45] font-normal tracking-[-0.005em] text-off-white/90">
+                Every system we sell, we run inside Vallon first. Orchestration
+                views, AI scoring, automated routing — load-tested on our own
+                work long before it goes near a client engagement.
+              </p>
+            </div>
+
+            <div className="flex justify-end max-lg:justify-start">
+              <FramedFigure
+                src="/about-phone.png"
+                alt="Vallon Labs internal tooling — Deploy AI Customer Service Bot task assigned, in-progress, high priority"
+                width={2048}
+                height={2048}
+                figureNumber="02"
+                figureLabel="Service bot"
+                caption="Vallon · Internal · in production"
+              />
+            </div>
           </div>
         </Container>
       </section>
