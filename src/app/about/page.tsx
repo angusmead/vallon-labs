@@ -4,6 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionEyebrow } from "@/components/site/SectionEyebrow";
 import { ClosingCTA } from "@/components/site/ClosingCTA";
 import { FramedFigure } from "@/components/site/FramedFigure";
+import { AmbientGrid } from "@/components/site/AmbientGrid";
 
 export const metadata: Metadata = {
   title: "About",
@@ -36,8 +37,9 @@ export default function AboutPage() {
       />
 
       {/* The obsession — long-form */}
-      <section className="border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
-        <Container>
+      <section className="relative overflow-hidden border-t-[0.5px] border-white/[0.12] py-25 max-md:py-16">
+        <AmbientGrid origin="78% 50%" />
+        <Container className="relative">
           <SectionEyebrow>Why we built this</SectionEyebrow>
 
           <div className="max-w-[680px] space-y-9">

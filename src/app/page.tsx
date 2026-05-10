@@ -6,18 +6,8 @@ import { PairBlock } from "@/components/site/PairBlock";
 import { SectionEyebrow } from "@/components/site/SectionEyebrow";
 import { FramedFigure } from "@/components/site/FramedFigure";
 import { LogoStrip } from "@/components/site/LogoStrip";
+import { AmbientGrid } from "@/components/site/AmbientGrid";
 import { buildServices, operateServices } from "@/lib/services";
-
-const heroGridStyle: React.CSSProperties = {
-  backgroundImage:
-    "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-  backgroundSize: "56px 56px",
-  WebkitMaskImage:
-    "radial-gradient(ellipse at 65% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 70%)",
-  maskImage:
-    "radial-gradient(ellipse at 65% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 70%)",
-  animation: "vl-drift 18s ease-in-out infinite alternate",
-};
 
 const processSteps = [
   { num: "01", title: "Audit", desc: "We map your current systems and identify the highest-leverage opportunities." },
@@ -45,11 +35,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-30 pb-25 max-md:pt-20 max-md:pb-16">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={heroGridStyle}
-        />
+        <AmbientGrid />
         <Container className="relative">
           <div className="grid grid-cols-[1fr_minmax(0,520px)] items-center gap-x-16 gap-y-14 max-lg:grid-cols-1 max-lg:items-start">
             <div>
