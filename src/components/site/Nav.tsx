@@ -3,6 +3,7 @@ import { Mark } from "./Mark";
 
 const links = [
   { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
   { href: "/approach", label: "Approach" },
   { href: "/perspective", label: "Perspective" },
   { href: "/contact", label: "Contact" },
